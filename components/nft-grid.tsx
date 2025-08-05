@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Heart, Share, Eye, MoreHorizontal } from "lucide-react"
 import { NFTModal } from "./nft-modal"
+import Image from "next/image"
 
 interface NFTGridProps {
   searchTerm: string
@@ -136,7 +137,7 @@ export function NFTGrid({ searchTerm, selectedCollection, viewMode }: NFTGridPro
                   onClick={() => setSelectedNFT(nft)}
                 >
                   <div className="flex items-center gap-4">
-                    <img
+                    <Image
                       src={nft.image || "/placeholder.svg"}
                       alt={nft.name}
                       className="w-16 h-16 rounded-2xl object-cover"
@@ -209,7 +210,8 @@ export function NFTGrid({ searchTerm, selectedCollection, viewMode }: NFTGridPro
           >
             <CardContent className="p-0">
               <div className="relative overflow-hidden rounded-t-3xl">
-                <img
+                
+                <Image
                   src={nft.image || "/placeholder.svg"}
                   alt={nft.name}
                   className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"

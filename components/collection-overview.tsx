@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Eye, ExternalLink } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Eye, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const collections = [
   {
@@ -42,7 +43,7 @@ const collections = [
     image: "/placeholder.svg?height=60&width=60",
     verified: false,
   },
-]
+];
 
 export function CollectionOverview() {
   return (
@@ -65,7 +66,7 @@ export function CollectionOverview() {
               style={{ animationDelay: `${300 + index * 100}ms` }}
             >
               <div className="flex items-center gap-4">
-                <img
+                <Image
                   src={collection.image || "/placeholder.svg"}
                   alt={collection.name}
                   className="w-16 h-16 rounded-2xl object-cover"
@@ -73,7 +74,9 @@ export function CollectionOverview() {
 
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center gap-2">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{collection.name}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">
+                      {collection.name}
+                    </h3>
                     {collection.verified && (
                       <Badge className="rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400">
                         ✓
@@ -87,9 +90,15 @@ export function CollectionOverview() {
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-gray-900 dark:text-white">{collection.totalValue}</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">
+                      {collection.totalValue}
+                    </span>
                     <span
-                      className={`text-sm ${collection.change.startsWith("+") ? "text-[#00FFC6]" : "text-[#FF6A88]"}`}
+                      className={`text-sm ${
+                        collection.change.startsWith("+")
+                          ? "text-[#00FFC6]"
+                          : "text-[#FF6A88]"
+                      }`}
                     >
                       {collection.change}
                     </span>
@@ -109,5 +118,5 @@ export function CollectionOverview() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

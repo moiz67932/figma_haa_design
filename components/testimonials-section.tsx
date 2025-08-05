@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Star } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -28,15 +29,19 @@ const testimonials = [
     avatar: "/placeholder.svg?height=80&width=80",
     rating: 5,
   },
-]
+];
 
 export function TestimonialsSection() {
   return (
     <section className="py-20 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Loved by Homeowners and Vehicle Owners</h2>
-          <p className="text-xl text-gray-600">Join thousands who trust HAA with their most valuable assets</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Loved by Homeowners and Vehicle Owners
+          </h2>
+          <p className="text-xl text-gray-600">
+            Join thousands who trust HAA with their most valuable assets
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -48,23 +53,31 @@ export function TestimonialsSection() {
               <CardContent className="p-8">
                 <div className="flex items-center justify-center mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" aria-hidden="true" />
+                    <Star
+                      key={i}
+                      className="w-6 h-6 text-yellow-400 fill-current"
+                      aria-hidden="true"
+                    />
                   ))}
-                  <span className="sr-only">{testimonial.rating} out of 5 stars</span>
+                  <span className="sr-only">
+                    {testimonial.rating} out of 5 stars
+                  </span>
                 </div>
 
                 <blockquote className="text-gray-700 mb-8 italic text-lg leading-relaxed text-center">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </blockquote>
 
                 <div className="flex items-center justify-center gap-4">
-                  <img
+                  <Image
                     src={testimonial.avatar || "/placeholder.svg"}
                     alt=""
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <div className="text-center">
-                    <div className="font-bold text-gray-900 text-lg">{testimonial.name}</div>
+                    <div className="font-bold text-gray-900 text-lg">
+                      {testimonial.name}
+                    </div>
                     <div className="text-gray-600">{testimonial.role}</div>
                   </div>
                 </div>
@@ -74,5 +87,5 @@ export function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

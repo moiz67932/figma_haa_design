@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Star, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -30,25 +31,31 @@ const testimonials = [
     avatar: "/placeholder.svg?height=60&width=60",
     rating: 5,
   },
-]
+];
 
 export function TestimonialsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
 
   return (
     <section className="py-20 bg-[#F8FAFC]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Loved by homeowners and vehicle owners</h2>
-          <p className="text-xl text-gray-600">Join thousands who trust HAA with their most valuable assets</p>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Loved by homeowners and vehicle owners
+          </h2>
+          <p className="text-xl text-gray-600">
+            Join thousands who trust HAA with their most valuable assets
+          </p>
         </div>
 
         <div className="relative">
@@ -56,24 +63,34 @@ export function TestimonialsCarousel() {
             <CardContent className="p-12 text-center">
               <div className="flex items-center justify-center mb-6">
                 {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" aria-hidden="true" />
+                  <Star
+                    key={i}
+                    className="w-6 h-6 text-yellow-400 fill-current"
+                    aria-hidden="true"
+                  />
                 ))}
-                <span className="sr-only">{testimonials[currentIndex].rating} out of 5 stars</span>
+                <span className="sr-only">
+                  {testimonials[currentIndex].rating} out of 5 stars
+                </span>
               </div>
 
               <blockquote className="text-xl text-gray-600 mb-8 italic leading-relaxed">
-                "{testimonials[currentIndex].content}"
+                &quot;{testimonials[currentIndex].content}&quot;
               </blockquote>
 
               <div className="flex items-center justify-center gap-4">
-                <img
+                <Image
                   src={testimonials[currentIndex].avatar || "/placeholder.svg"}
                   alt=""
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="text-left">
-                  <div className="font-semibold text-gray-900">{testimonials[currentIndex].name}</div>
-                  <div className="text-gray-600">{testimonials[currentIndex].role}</div>
+                  <div className="font-semibold text-gray-900">
+                    {testimonials[currentIndex].name}
+                  </div>
+                  <div className="text-gray-600">
+                    {testimonials[currentIndex].role}
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -116,5 +133,5 @@ export function TestimonialsCarousel() {
         </div>
       </div>
     </section>
-  )
+  );
 }
